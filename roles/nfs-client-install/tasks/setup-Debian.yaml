@@ -1,0 +1,20 @@
+---
+- name: install-nfs-client
+  apt:
+    name: nfs-common
+    state: latest
+- name: create-mount
+  file:
+    path=/nfsdata
+    state=directory
+    mode=755
+    owner=root
+- name: mount-directory
+  mount:
+    name=/nfsdata
+    src=192.168.0.104:/opt/nfsdata
+    fstype=nfs
+    dump=0
+    passno=2
+    opts=defaults,rw,bg
+    state=mounted

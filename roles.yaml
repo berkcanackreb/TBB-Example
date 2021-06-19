@@ -1,0 +1,13 @@
+- hosts: centos-server
+  remote_user: nadmin123
+  become: true
+  roles:
+    - role: nfs-server-install
+  tags: nfs-server-install
+- hosts: ubuntu-client
+  remote_user: nadmin
+  become: true
+  roles:
+    - role: nfs-client-install
+  tags: nfs-client-install
+
